@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Pauli.jpg" type="image/x-icon">
+    <title>Carta para mi niña hermosa ❤️‍🔥</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="diseño.css">
+</head>
+
+<body>
+    <div class="card">
+        <div class="card-inner">
+            <div class="card-front">
+                <h1>Para mi paulina❤️</h1>
+                <p class="message" id="message"></p>
+                <span class="heart">❤️</span>
+                <button onclick="showMessage()">Abrir Mensaje</button>
+            </div>
+            <div class="card-back">
+                <p class="hidden-message" id="hiddenMessage">Feliz 14 de febrero mi vida, puede que estemos a la distancia, pero eso no significa que no te de nada para este dia especial, por eso te hice esta cartita con mucho cariño solo para mi reina preciosa, Te amo infinitamente con todote mi
+                    corazon. 💖
+                </p>
+                <div class="rose-container">
+                    <img src="Pauli.jpg" alt="Rosa" class="rose">
+                    <!-- Cambia "rose.png" por tu imagen -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="petals-container"></div>
+
+    <script>
+        const message = "Desde el primer momento que te vi supe que tu eras la indicada para formar parte de mi vida, mi niña...";
+        let index = 0;
+
+        function typeMessage() {
+            if (index < message.length) {
+                document.getElementById("message").textContent += message.charAt(index);
+                index++;
+                setTimeout(typeMessage, 50);
+            }
+        }
+
+        function showMessage() {
+            const card = document.querySelector('.card');
+            card.classList.toggle('open');
+            document.getElementById("hiddenMessage").style.display = "block";
+            createPetals();
+        }
+
+        function createPetals() {
+            const petalsContainer = document.querySelector('.petals-container');
+            for (let i = 0; i < 20; i++) {
+                let petal = document.createElement("img");
+                petal.src = "Pauli.jpg"; // Cambia "petal.png" por tu imagen
+                petal.classList.add("petal");
+                petal.style.left = `${Math.random() * 100}vw`;
+                petal.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                petalsContainer.appendChild(petal);
+                setTimeout(() => petal.remove(), 5000);
+            }
+        }
+
+        window.onload = typeMessage;
+    </script>
+</body>
+
+</html>
